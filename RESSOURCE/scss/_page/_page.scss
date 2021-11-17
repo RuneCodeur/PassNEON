@@ -1,0 +1,46 @@
+.info{
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 97.5%;
+    height: 100%;
+    h1{
+        font-size: 85px;
+        font-weight: normal;
+        margin: 35px 0;
+        padding-left: 8px;
+    }
+    div{
+        margin-bottom: 60px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .QRcode{
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 10px $colorfont solid;
+            border-radius: 50px ;
+            background-color: white;
+            width: auto;
+            height: auto;
+            img{
+                border: 2px $colorfont solid;
+                width: 280px;
+                height: 280px;
+            }
+        }
+        h2{
+            text-align: center;
+            font-size: 30px;
+            width: 90;
+            margin-top: 25px;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+//responsive largeur
+@media screen and (max-width: 390px){
+    .info > h1{
+        font-size: 65px;
+    }
+    .info > div > h2{
+        font-size: 25px;
+    }
+    .info> div >.QRcode > img{
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media screen and (max-width: 315px){
+    .info > h1{
+        font-size: 55px;
+    }
+    .info > div > h2{
+        font-size: 20px;
+    }
+    .info> div >.QRcode > img{
+        width: 210px;
+        height: 210px;
+    } 
+    .anim > .ground{
+        top:290px;
+    }
+    .anim > .responsive-unicorn{
+        top: 117px;
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-width: 270px){
+    .info > h1{
+        font-size: 45px;
+    }
+    .info > div > h2{
+        font-size: 20px;
+    }
+    .info> div >.QRcode > img{
+        width: 180px;
+        height: 180px;
+    } 
+}
+
+//responsive hauteur
+@media screen and (max-height: 840px){
+    .info> div >.QRcode > img{
+        width: 210px;
+        height: 210px;
+    } 
+}
+
+@media screen and (max-height: 775px){
+    .info> div >.QRcode > img{
+        width: 180px;
+        height: 180px;
+    } 
+}
+
+@media screen and (max-height: 740px){
+    .info> div >.QRcode > img{
+        width: 150px;
+        height: 150px;
+    } 
+}
+
+@media screen and (max-height: 710px){
+    .info> div >.QRcode > img{
+        width: 140px;
+        height: 140px;
+    } 
+    .anim > .ground{
+        top: 290px;
+    }
+    .anim > .responsive-unicorn{
+        top: 117px;
+        transform: scale(0.7);
+    }
+}
+
+@media screen and (max-height: 640px){
+    .info> div >.QRcode > img{
+        width: 130px;
+        height: 130px;
+    } 
+    .anim > .ground{
+        top: 270px;
+    }
+    .anim > .responsive-unicorn{
+        top: 83px;
+        transform: scale(0.6);
+    }
+}
+
+@media screen and (max-height: 610px){
+    .info> div >.QRcode > img{
+        width: 120px;
+        height: 120px;
+    } 
+    .anim > .ground{
+        top: 258px;
+    }
+    .anim > .responsive-unicorn{
+        top: 61px;
+        transform: scale(0.5);
+    }
+}

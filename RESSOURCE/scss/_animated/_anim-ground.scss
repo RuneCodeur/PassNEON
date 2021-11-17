@@ -1,0 +1,31 @@
+.grid-1{
+    animation-name: animation-grid;
+    animation-iteration-count: infinite;
+    animation-duration: $rythm-ground;
+    animation-timing-function: linear;
+}
+.grid-2{
+    animation-name: animation-grid-2;
+    animation-iteration-count: infinite;
+    animation-duration: $rythm-ground;
+    animation-timing-function: linear;
+}
+
+@keyframes animation-grid {
+    from {
+        transform: rotateX(45deg) translateZ(-30px) translateX(0);
+    }
+    to {
+        transform: rotateX(45deg) translateZ(-30px)translateX(-790px);
+    }
+}
+
+
+@keyframes animation-grid-2 {
+    from {
+        transform: rotateX(45deg) translateZ(-30px) translateX(790px);
+    }
+    to {
+        transform: rotateX(45deg) translateZ(-30px)translateX(0);
+    }
+}

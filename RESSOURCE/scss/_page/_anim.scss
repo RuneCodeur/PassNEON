@@ -1,0 +1,230 @@
+.anim{
+    z-index: 1;
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    perspective: 700px;
+    .ground{
+        box-shadow: white 0 -10px 800px ;
+        z-index: 1;
+        width: 100%;
+        min-width: 200px;
+        height: 100%;
+        top: 355px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        perspective: 500px;
+        .grid-1, .grid-2{
+            top: -40px;
+            width: 800px;
+            height: 100%;
+            background-image: url("public/images/quadrillage.png");
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: auto;
+            position: fixed;
+            transform-origin: 50% top;
+            perspective-origin: top;
+        }
+    }
+    span{
+        width: 130px;
+        height: 500px;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        animation-iteration-count: infinite;
+    }
+    .responsive-unicorn{
+        z-index: 2;
+        top: 218px;
+        transform: scale(1);
+        display: flex;
+        justify-content: center;
+        span{
+            animation-duration: $rythm-unicorn;
+        }
+        .unicorn{
+            z-index: 2;
+            width: 290px;
+            height: 290px;
+            top: -42px;
+            position: fixed;
+            .ensemble-chest{
+                z-index: 3;
+                left: 72px;
+                top: 49px;
+                .chest{
+                    z-index: 2;
+                    background-image: url("public/images/chest.png");
+                }
+                .frontlug-right, .backlug-right{
+                    z-index: 3; 
+                }
+                .frontlug-left, .backlug-left{
+                    z-index: 1;
+                }
+                .frontlug-part1{
+                    width: 33px;
+                    background-image: url("public/images/front-lug1.png");
+                    left: 80px;
+                    top: 17px;
+                    .frontlug-part2{
+                        z-index: 2;
+                        width: 15px;
+                        background-image: url("public/images/front-lug2.png");
+                        left: 15px;
+                        top: 69px;
+                    }
+                    .hoof{
+                        z-index: 1;
+                        width: 22px;
+                        background-image: url("public/images/hoof.png");
+                        left: 14px;
+                        top: 91px;
+                    }
+                }
+                .backlug-part1{
+                    width: 40px;
+                    background-image: url("public/images/back-lug1.png");
+                    left: 5px;
+                    top: 6px;
+                    .backlug-part2{
+                        width: 30px;
+                        background-image: url("public/images/back-lug2.png");
+                        left: 5px;
+                        top: 44px;
+                        .backlug-part3{
+                            z-index: 2;
+                            width: 19px;
+                            background-image: url("public/images/back-lug3.png");
+                            left: -2px;
+                            top: 29px;
+                        }
+                        .hoof{
+                            z-index: 1;
+                            width: 22px;
+                            background-image: url("public/images/hoof.png");
+                            left: -3px;
+                            top: 59px;
+                        }
+                    }
+                }
+            }
+            .ensemble-tail{
+                z-index: 1;
+                .tail1{
+                    z-index: 1;
+                    width: 85px;
+                    background-image: url("public/images/tail1.png");
+                    left: 5px;
+                    top: 42px;
+                }
+                .tail2{
+                    z-index: 3;
+                    width: 86px;
+                    background-image: url("public/images/tail2.png");
+                    left: 3px;
+                    top: 48px;
+                }.tail3{
+                    z-index: 2;
+                    width: 79px;
+                    background-image: url("public/images/tail3.png");
+                    left: 10px;
+                    top: 49px;
+                }
+            }
+            .ensemble-neck{
+                    left: 165px;
+                    top: 29px;
+                .neck{
+                    width: 49px;
+                    z-index: 2;
+                    background-image: url("public/images/neck.png");
+                    .ensemble-head{
+                        z-index: 2;
+                        .head{
+                            z-index: 2;
+                            width: 101px;
+                            background-image: url("public/images/head.png");
+                            left: 25px;
+                            top: -16px;
+                        }
+                        .ears-right{
+                            z-index: 3;
+                            width: 10px;
+                            background-image: url("public/images/ears-right.png");
+                            left: 55.5px;
+                            top: -16px;
+                        } 
+                        .ears-left{
+                            z-index: 1;
+                            width: 10px;
+                            background-image: url("public/images/ears-left.png");
+                            left: 58px;
+                            top: -10px;
+                        }
+                        .mane1{
+                            z-index:1;
+                            width: 95px;
+                            background-image: url("public/images/mane1.png");
+                            left: -40px;
+                            top: -30px;
+                        }
+                        .mane2{
+                            z-index:1;
+                            width: 68px;
+                            background-image: url("public/images/mane2.png");
+                            left: -15px;
+                            top: -18px;
+                        }
+                    }
+                }
+               
+                .ensemble-mane{
+                    z-index: 1;
+                    left: 0px;
+                    top: 0px;
+                    
+                    .mane3{
+                        z-index:4;
+                        width: 85px;
+                        background-image: url("public/images/mane3.png");
+                        left: -40px;
+                        top: -16px;
+                    }
+                    .mane4{
+                        z-index:3;
+                        width: 65px;
+                        background-image: url("public/images/mane4.png");
+                        left: -21px;
+                        top: -11px;
+                    }
+                    .mane5{
+                        z-index:1;
+                        width: 57px;
+                        background-image: url("public/images/mane5.png");
+                        left: -21px;
+                        top: -5px;
+                    }
+                    .mane6{
+                        z-index:2;
+                        width: 57px;
+                        background-image: url("public/images/mane6.png");
+                        left: -16px;
+                        top: -2px;
+                    }
+                }
+            }
+        }
+    }
+}
