@@ -2,15 +2,22 @@ import * as React from 'react';
 import { View, Text, Image, StyleSheet, ImageBackground, Animated, Easing } from "react-native";
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
+import { withAnchorPoint } from 'react-native-anchor-point';
+
 
 class pass extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       fontsLoaded: false,
+      delay: false,
       ground: new Animated.Value(-60),
+      unicornTotal: new Animated.Value(0),
+      ensembleNeck: new Animated.Value(0),
+      ensembleHead: new Animated.Value(0),
     }
   }
+    
 
   async loadFonts() {
     await Font.loadAsync({
@@ -19,32 +26,135 @@ class pass extends React.Component {
     });
     this.setState({ fontsLoaded: true });
   }
+  
 
+  
   componentDidMount() {
     this.loadFonts();
+    /*timing d'animation du defilment du sol */
+    
     Animated.loop(
-    Animated.sequence([
-      Animated.timing(
-        this.state.ground, {
-          toValue: -427,
-          duration: 1000,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }
-      ),
-      Animated.timing(
-        this.state.ground, {
-          toValue: -60,
-          duration: 0,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }
-      )
+      Animated.sequence([
+        Animated.timing(
+          this.state.ground, {
+            toValue: -427,
+            duration: 1000,
+            easing: Easing.linear,
+            useNativeDriver: true
+          }
+        ),
+        Animated.timing(
+          this.state.ground, {
+            toValue: -60,
+            duration: 0,
+            easing: Easing.linear,
+            useNativeDriver: true
+          }
+        )
+      ])
+    ).start()
 
-    ])
-     
-    ).start() 
+    /*timing et type d'animation de la licorne */
+    Animated.stagger(0,[
+      Animated.parallel([
+
+        /*total de la licorne */
+        Animated.loop(
+          Animated.sequence([
+            Animated.timing(
+            this.state.unicornTotal,{
+              toValue:1,
+              duration: 800,
+              easing: Easing.elastic(0),
+              useNativeDriver: true
+            }),
+            Animated.timing(
+            this.state.unicornTotal,{
+              toValue:0,
+              duration: 200,
+              easing: Easing.elastic(0),
+              useNativeDriver: true
+            })
+          ])
+        ),
+        /*le cou */
+        Animated.loop(
+        Animated.sequence([
+          Animated.timing(
+          this.state.ensembleNeck,{
+            toValue:1,
+            duration: 500,
+            easing: Easing.elastic(0),
+            useNativeDriver: true
+          }),
+          Animated.timing(
+          this.state.ensembleNeck,{
+            toValue:0,
+            duration: 500,
+            easing: Easing.elastic(0),
+            useNativeDriver: true
+          })
+        ]),
+        ),
+
+        /*la tête */
+        Animated.loop(
+          Animated.sequence([
+            Animated.timing(
+            this.state.ensembleHead,{
+              toValue:1,
+              duration: 500,
+              easing: Easing.elastic(0),
+              useNativeDriver: true
+            }),
+            Animated.timing(
+            this.state.ensembleHead,{
+              toValue:0,
+              duration: 500,
+              easing: Easing.elastic(0),
+              useNativeDriver: true
+            })
+          ])
+        ),
+
+      ])
+    ]).start()
   }
+
+  /* degrés et position de la rotation des parties de la licorne*/
+  unicornTotal(){
+    const deg = this.state.unicornTotal.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['6deg', '-6deg']
+    })
+    let transform={
+      transform:[{rotateZ: deg}]
+    }
+    return withAnchorPoint(transform, { x: 1, y: 1 }, { width: 0, height: 0 });
+  };
+
+  ensembleNeck(){
+    const deg = this.state.ensembleNeck.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['5deg', '-5deg']
+    })
+    let transform={
+      transform:[{rotateZ: deg}]
+    }
+    return withAnchorPoint(transform, { x: 0, y: 1 }, { width: 55, height: 40 });
+  };
+
+  ensembleHead(){
+    const deg = this.state.ensembleNeck.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['-25deg', '0deg']
+    })
+    let transform={
+      transform:[{rotateZ: deg}]
+    }
+    return withAnchorPoint(transform, { x:0, y: 0.4 }, { width: 50, height: 48 });
+  };
+
 
   render(){
     if(this.state.fontsLoaded){
@@ -65,10 +175,10 @@ class pass extends React.Component {
           </View>
 
           <View style={style.unicorn}>
-            <Animated.View style={style.unicornTotalAnim}>
+            <Animated.View style={[style.unicornTotalAnim, this.unicornTotal()]}>
               
               <Animated.View style={style.ensembleChest}>
-                <Animated.View style={style.ensembleNeck}>
+                <Animated.View style={[style.ensembleNeck, this.ensembleNeck()]}>
 
                   {/* crinière de cou */}
                   <Animated.View style={style.mane6}>
@@ -85,7 +195,7 @@ class pass extends React.Component {
                   <Image style={style.unicornPart} source={require('../src/picture/neck.png')}/>
                   
                   {/*ensemble de la tête */}
-                  <Animated.View style={style.ensembleHead}>
+                  <Animated.View style={[style.ensembleHead,this.ensembleHead()]}>
                     {/* crinière  */}
                     <Animated.View style={style.mane3}>
                       <Image style={style.unicornPart} source={require('../src/picture/mane3.png')}/>
@@ -200,6 +310,7 @@ class pass extends React.Component {
     }
   }
 }
+
 
 const style = StyleSheet.create({
   tail3:{
@@ -330,17 +441,17 @@ const style = StyleSheet.create({
   },
   ensembleHead:{
     position: 'absolute',
-    width: 69,
-    height: 41,
-    top: -7,
-    left: 20,
+    width: 74,
+    height: 45,
+    top: -12,
+    left: 15,
   },
   ensembleNeck:{
     position: 'absolute',
-    width: 33,
-    height: 48,
-    top: -15,
-    left: 65,
+    width: 32,
+    height: 45,
+    top: -12,
+    left: 66,
   },
   ensembleChest:{
     position: 'absolute',

@@ -16,17 +16,11 @@ body, html{
 
 @font-face {
     font-family: 'streamster';
-    src: url("public/typo/streamster.otf"),
-        url("public/typo/streamster.svg"),
-        url("public/typo/streamster.ttf"),
-        url("public/typo/streamster.woff"),
+    src: url("public/typo/streamster.ttf")
 }
 @font-face {
     font-family: 'VCR';
-    src: url("public/typo/VCR.otf"),
-        url("public/typo/VCR.svg"),
-        url("public/typo/VCR.ttf"),
-        url("public/typo/VCR.woff"),
+    src: url("public/typo/VCR.ttf")
 }
 
 *{

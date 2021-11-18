@@ -20,6 +20,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-anchor-point": "^1.0.6",
     "react-native-camera": "^4.2.1",
     "react-native-customized-image-picker": "^1.2.2",
     "react-native-fs": "^1.2.0",
