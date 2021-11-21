@@ -13,9 +13,10 @@ class Profil extends React.Component {
     }
   }
   _changeMyName(text){
-    this.setState({ myName: text })
-    const action = { type: "replace-name", value: text }
-    this.props.dispatch(action)
+      this.setState({ myName: text })
+      const action = { type: "replace-name", value: text }
+      this.props.dispatch(action)
+    
   }
   
   
@@ -48,13 +49,13 @@ class Profil extends React.Component {
         <View style={style.form}>
           <View>
             <Text style={style.myname}> nom et prénom </Text>
-            <TextInput style={style.mynameinput} placeholder="Harry Potter" onChangeText={(text) =>this._changeMyName(text)}></TextInput>
+            <TextInput style={style.mynameinput} placeholder="Harry Potter" defaultValue={this.props.myInfos.myName} onChangeText={(text) =>this._changeMyName(text)}></TextInput>
           </View>
             <TouchableOpacity onPress={this._QRcliqued} style={style.ensembleButton}>
               <Text style={style.button}>Mon QR code</Text>
             </TouchableOpacity>
-            { this.props.myCode == null && <Image source={require('../src/picture/code.png')} style={{ width: 200, height: 200 }} /> }
-            { this.props.myCode != null && <Image source={{ uri: this.props.myCode }} style={{ width: 200, height: 200 }} /> }
+            { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={{ width: 200, height: 200 }} /> }
+            { this.props.myInfos.myCode != null && <Image source={{ uri: this.props.myInfos.myCode }} style={{ width: 200, height: 200 }} /> }
         </View>
       </View>
     );

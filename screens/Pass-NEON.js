@@ -8,9 +8,7 @@ class pass extends React.Component {
     super(props)
     this.state = {
       fontsLoaded: false,
-      delay: false,
       ground: new Animated.Value(-60),
-      
     }
   }
     
@@ -49,8 +47,8 @@ class pass extends React.Component {
   }
 
   render(){
+
     if(this.state.fontsLoaded){
-      
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <ImageBackground resizeMode="cover" source={require('../src/picture/fond-space.jpg') } style={style.background}>
@@ -59,11 +57,15 @@ class pass extends React.Component {
             <Text style={style.title}>Pass Sanitaire</Text>
             <Text style={style.title2}>Pass Sanitaire</Text>
             <View style={ style.blocPicture }>
-              { this.props.myCode == null && <Image source={require('../src/picture/code.png')} style={ style.picture } /> }
-              { this.props.myCode != null && <Image source={{ uri: this.props.myCode }} style={ style.picture } /> }
+              { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={ style.picture } /> }
+              { this.props.myInfos.myCode != null && <Image source={{ uri: this.props.myInfos.myCode }} style={ style.picture } /> }
             </View>
-            <Text style={style.myName}> {this.props.myName} </Text>
-            <Text style={style.myName2}> {this.props.myName} </Text>
+            
+            {this.props.myInfos.myName != '' && <Text style={style.myName}> {this.props.myInfos.myName} </Text>}
+            {this.props.myInfos.myName != '' && <Text style={style.myName2}> {this.props.myInfos.myName} </Text>}
+
+            {this.props.myInfos.myName == '' && <Text style={style.myName}> Harry Potter </Text>}
+            {this.props.myInfos.myName == '' && <Text style={style.myName2}> Harry Potter </Text>}
           </View>
 
           <View style={style.ensembleUnicorn}>

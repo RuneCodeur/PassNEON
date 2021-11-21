@@ -4,7 +4,7 @@ export default [
         iconName: 'Mon-profile'
     },
     {
-        name:'Pass-NEON',
+        name:'Pass-Sanitaire',
         iconName: 'PASS'
     }
 ]
