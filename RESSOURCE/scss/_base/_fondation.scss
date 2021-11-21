@@ -7,7 +7,6 @@ body, html{
     align-items: center;
     justify-content:start;
     flex-direction: column;
-    background-color: green;
     background-position: center;
     background-repeat: no-repeat;
     object-fit: cover;
@@ -21,28 +20,4 @@ body, html{
 @font-face {
     font-family: 'VCR';
     src: url("public/typo/VCR.ttf")
-}
-
-*{
-    font-family: 'streamster', cursive;
-    color: $colorfont;
-    text-shadow: $colorshadowfont 3px 3px 5px, $colorshadowfont -3px -3px 5px;
-    margin: 0;
-    padding: 0;
-}
-
-h2{
-    font-family:'VCR', Arial, Helvetica, sans-serif;
-    color: black;
-    text-shadow: 0 4px 0 #00ecff, 0 -4px 0 #ff4045;
-}
-#error{
-    background-color: brown;
-    color: black;
-    text-shadow: none;
-    font-family: sans-serif;
-    font-size: 25px;
-    padding: 15px;
-    font-weight: bolder;
-    display: none;
 }
