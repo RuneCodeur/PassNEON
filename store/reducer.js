@@ -1,4 +1,4 @@
-const initialInfo = {myName: 'Harry Potter', myCode: null}
+const initialInfo = {myName: '', myCode: null}
 
 
 function myInfos(state = initialInfo, action) {

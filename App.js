@@ -2,18 +2,22 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
-import ProfileScreen from './screens/Profile'
-import passNEON from './screens/Pass-NEON'
-import DrawerItems from './constants/DrawerItems';
-import { Provider } from 'react-redux'
-import Store from './store/configure'
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/es/integration/react'
+import ProfilScreen from './screens/Profil';
+import passNEON from './screens/Pass-NEON';
+import QRscan from './screens/QRscan';
+
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/es/integration/react';
+import Store from './store/configure';
 
 const Drawer = createDrawerNavigator();
 
+
+
 export default function App() {
   let persistor = persistStore(Store)
+
   return (
     <NavigationContainer>
       
@@ -21,26 +25,29 @@ export default function App() {
         <PersistGate persistor={persistor}>
           <Drawer.Navigator 
             drawerType="front"
-            initialRouteName="Profile"
+            initialRouteName = "Pass-Sanitaire"
             screenOptions={{
               activeTintColor: '#e91e63',
               itemStyle: { marginVertical: 10 },
-            }}
-          
-          >
-            {
-              DrawerItems.map(drawer=>
-                <Drawer.Screen 
-                key = {drawer.name}
-                name = {drawer.name}
-                options = {{ headerShown: false}}
-                component = {
-                  drawer.name === 'Profile' ? ProfileScreen 
-                    : drawer.name === 'Pass-Sanitaire' ? passNEON 
-                        :passNEON
-                } 
-              />)
-            }
+          }}>
+            
+            <Drawer.Screen
+              name = 'mon profil'
+              options = {{ headerShown: false }}
+              component = { ProfilScreen } 
+            />
+            <Drawer.Screen
+              name = 'Pass-Sanitaire'
+              options = {{ headerShown: false }}
+              component = { passNEON } 
+            />
+            <Drawer.Screen
+              name = 'scan'
+              options = {{ headerShown: false,
+                drawerItemStyle: { height: 0 } }}
+              component = { QRscan }
+            />
+            
           </Drawer.Navigator>
         </PersistGate>
       </Provider>

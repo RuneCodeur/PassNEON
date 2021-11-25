@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "passNEON",
+    "name": "pass NEON",
     "slug": "passNEON",
-    "version": "1.0.0",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -25,7 +25,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "app.yreelfactory.passneon.app",
-      "versionCode":1
+      "versionCode":5
     },
     "web": {
       "favicon": "./assets/favicon.png"

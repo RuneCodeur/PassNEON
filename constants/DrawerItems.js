@@ -1,10 +1,11 @@
 export default [
     {
-        name:'Profile',
-        iconName: 'Mon-profile'
+        name:'mon profil'
     },
     {
-        name:'Pass-Sanitaire',
-        iconName: 'PASS'
+        name:'Pass-Sanitaire'
+    },
+    {
+        name:'scan'
     }
 ]

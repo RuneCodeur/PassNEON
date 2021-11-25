@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, Image, StyleSheet, ImageBackground, Animated, Easing } from "react-native";
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
+import QRCode from 'react-native-qrcode-svg';
 
 class pass extends React.Component {
   constructor(props) {
@@ -57,15 +58,17 @@ class pass extends React.Component {
             <Text style={style.title}>Pass Sanitaire</Text>
             <Text style={style.title2}>Pass Sanitaire</Text>
             <View style={ style.blocPicture }>
-              { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={ style.picture } /> }
-              { this.props.myInfos.myCode != null && <Image source={{ uri: this.props.myInfos.myCode }} style={ style.picture } /> }
+              { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={{ width: 200, height: 200 }} /> }
+              { this.props.myInfos.myCode != null && <QRCode value={this.props.myInfos.myCode} size={200}/> }
             </View>
-            
-            {this.props.myInfos.myName != '' && <Text style={style.myName}> {this.props.myInfos.myName} </Text>}
-            {this.props.myInfos.myName != '' && <Text style={style.myName2}> {this.props.myInfos.myName} </Text>}
+            <View style={style.ensembleName}>
+              {this.props.myInfos.myName != '' && <Text style={style.myName}> {this.props.myInfos.myName} </Text>}
+              {this.props.myInfos.myName != '' && <Text style={style.myName2}> {this.props.myInfos.myName} </Text>}
 
-            {this.props.myInfos.myName == '' && <Text style={style.myName}> Harry Potter </Text>}
-            {this.props.myInfos.myName == '' && <Text style={style.myName2}> Harry Potter </Text>}
+              {this.props.myInfos.myName == '' && <Text style={style.myName}> Rick DECKARD </Text>}
+              {this.props.myInfos.myName == '' && <Text style={style.myName2}> Rick DECKARD </Text>}
+
+            </View>
           </View>
 
           <View style={style.ensembleUnicorn}>
@@ -147,9 +150,14 @@ const style = StyleSheet.create({
     width: 200, 
     height: 200 
   },
+  ensembleName:{
+    marginTop:50,
+    justifyContent:'center',
+    alignItems:'center',
+  },
   myName:{
     fontFamily: 'VCR',
-    marginTop: 50,
+    position:'absolute',
     fontSize: 30,
     textAlign: 'center',
     textShadowColor: 'rgb(0, 236, 255)',
@@ -158,8 +166,7 @@ const style = StyleSheet.create({
   },
   myName2:{
     fontFamily: 'VCR',
-    position:'relative',
-    top: -27,
+    position:'absolute',
     fontSize: 30,
     textAlign: 'center',
     textShadowColor: 'rgb(255, 64, 69)',
