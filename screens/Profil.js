@@ -17,30 +17,11 @@ class Profil extends React.Component {
     }
   }
 
-  /*_QRcliqued = async () =>{
-    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  
-    if (permissionResult.granted === false) {
-      alert("Permission to access camera roll is required!");
-      return;
-    }
-  
-    let pickerResult = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [3, 3],
-      quality: 1,
-    });
-    this.setState({ myCode: pickerResult.uri })
-    const action = { type: "replace-qr", value: pickerResult.uri }
-    this.props.dispatch(action)
-  }*/
-
   _changeMyName(text){
       this.setState({ myName: text })
       const action = { type: "replace-name", value: text }
       this.props.dispatch(action)
-  }
+  } 
 
   _scanMyCode(){
     this.props.navigation.navigate('scan')
@@ -95,7 +76,6 @@ const style = StyleSheet.create({
     alignItems:'center',
   },
   ensembleButton:{
-    height: 50,
     marginTop: 50,
     marginBottom: 5,
     color: 'white',

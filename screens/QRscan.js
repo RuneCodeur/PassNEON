@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Camera} from 'expo-camera'
-import * as Location from 'expo-location';
+import * as ImagePicker from 'expo-image-picker';
 import { connect } from 'react-redux';
 
  class Scanner extends React.Component {
@@ -17,7 +17,8 @@ import { connect } from 'react-redux';
 	}
 
 	async componentDidMount() {
-		const { status } = await Location.requestForegroundPermissionsAsync()
+		this.forceUpdate
+		const { status } = await ImagePicker.requestCameraPermissionsAsync() 
 		this.setState({ hasCameraPermission: status === 'granted' })
 	}
 
@@ -40,23 +41,22 @@ import { connect } from 'react-redux';
             		<Text style={style.button}>Retour</Text>
           		</TouchableOpacity>
 
-			</View>
-		);
-	}
+				</View>
+			);
+		}
 
 	scan = ({data}) => {
-		
 		const action = { type: "replace-qr", value: data }
-		console.log(data)
 		this.props.dispatch(action)
+
 		this.props.navigation.navigate('mon profil')
 	}
 }
 
 const style = StyleSheet.create({
 	camera:{
-		width: 300,
-		height: 500,
+		width: '90%',
+		height: '75%',
 		marginTop:50
 	},
 	ensembleButton:{

@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import ProfilScreen from './screens/Profil';
 import passNEON from './screens/Pass-NEON';
 import QRscan from './screens/QRscan';
+import notes from './screens/note';
 
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
@@ -32,20 +33,26 @@ export default function App() {
           }}>
             
             <Drawer.Screen
+              name = 'Pass-Sanitaire'
+              options = {{ headerShown: false,
+                drawerItemStyle: { fontWeight: '700', } }}
+              component = { passNEON } 
+            />
+            <Drawer.Screen
               name = 'mon profil'
               options = {{ headerShown: false }}
               component = { ProfilScreen } 
-            />
-            <Drawer.Screen
-              name = 'Pass-Sanitaire'
-              options = {{ headerShown: false }}
-              component = { passNEON } 
             />
             <Drawer.Screen
               name = 'scan'
               options = {{ headerShown: false,
                 drawerItemStyle: { height: 0 } }}
               component = { QRscan }
+            />
+            <Drawer.Screen
+              name = 'Note du Développeur'
+              options = {{ headerShown: false, drawerItemStyle: { marginTop: 25 } }}
+              component = { notes }
             />
             
           </Drawer.Navigator>
