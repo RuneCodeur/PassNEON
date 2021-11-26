@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { TextInput } from 'react-native-gesture-handler';
-import * as ImagePicker from 'expo-image-picker';
 import { connect } from 'react-redux';
-import {Camera} from 'expo-camera';
 import QRCode from 'react-native-qrcode-svg';
 
 
@@ -24,7 +22,7 @@ class Profil extends React.Component {
   } 
 
   _scanMyCode(){
-    this.props.navigation.navigate('scan')
+    this.props.navigation.navigate({name:'scan'})
   }
 
   render(){

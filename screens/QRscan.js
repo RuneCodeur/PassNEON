@@ -1,54 +1,50 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {Camera} from 'expo-camera'
-import * as ImagePicker from 'expo-image-picker';
 import { connect } from 'react-redux';
 
  class Scanner extends React.Component {
 	constructor(props) {
-	  super(props)
+	super(props)
+		this.state = {
+			hasCameraPermission: null,
+		};
 	}
-	state = {
-		hasCameraPermission: null,
-	};
 
 	_stopscanning(){
 		this.props.navigation.navigate('mon profil')
 	}
 
 	async componentDidMount() {
-		this.forceUpdate
-		const { status } = await ImagePicker.requestCameraPermissionsAsync() 
+		const { status } = await Camera.requestCameraPermissionsAsync()
 		this.setState({ hasCameraPermission: status === 'granted' })
+		
 	}
+	
 
 	render(){
-		const { hasCameraPermission } = this.state;
-
-		if (hasCameraPermission === null) {
-			return null 
+		if (this.state.hasCameraPermission === null) {
+			return null
 		}
-
-		if (hasCameraPermission === false) {
-			alert('vous devez autoriser l\'accès à la camera.')
+		if (this.state.hasCameraPermission === false) {
+			alert('vous devez autoriser l\'accès à la camera.') 
 		}
 
 		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', }}>
-				<Camera style={style.camera} onBarCodeScanned={this.scan} />
+			<View key={this.state.key} style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', }}>
+				<Camera style={style.camera} onBarCodeScanned={this.scan} type={'back'}/>
 
 				<TouchableOpacity onPress={()=>this._stopscanning()} style={style.ensembleButton}>
             		<Text style={style.button}>Retour</Text>
           		</TouchableOpacity>
 
-				</View>
-			);
-		}
+			</View>
+		);
+	}
 
 	scan = ({data}) => {
 		const action = { type: "replace-qr", value: data }
 		this.props.dispatch(action)
-
 		this.props.navigation.navigate('mon profil')
 	}
 }
@@ -56,13 +52,13 @@ import { connect } from 'react-redux';
 const style = StyleSheet.create({
 	camera:{
 		width: '90%',
-		height: '75%',
+		height: '75%', 
 		marginTop:50
 	},
 	ensembleButton:{
 	  	backgroundColor: 'blue',
 	  	height: 50,
-	  	width: '100%',
+		width: '90%',
 	  	marginTop: 25,
 	  	alignItems:'center',
 	  	justifyContent: 'center',

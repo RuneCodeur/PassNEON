@@ -46,7 +46,8 @@ export default function App() {
             <Drawer.Screen
               name = 'scan'
               options = {{ headerShown: false,
-                drawerItemStyle: { height: 0 } }}
+                drawerItemStyle: { height: 0 },
+                unmountOnBlur: true }}
               component = { QRscan }
             />
             <Drawer.Screen
