@@ -51,7 +51,7 @@ class pass extends React.Component {
 
     if(this.state.fontsLoaded){
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#0d0d0d'}}>
         <ImageBackground resizeMode="cover" source={require('../src/picture/fond-space.jpg') } style={style.background}>
 
           <View style={style.generalInfo}>
@@ -106,7 +106,8 @@ const style = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    resizeMode: 'cover',
   },
   generalInfo:{
     width:'100%',
