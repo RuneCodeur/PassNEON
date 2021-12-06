@@ -14,8 +14,6 @@ import Store from './store/configure';
 
 const Drawer = createDrawerNavigator();
 
-
-
 export default function App() {
   let persistor = persistStore(Store)
 

@@ -1,8 +1,8 @@
 PassNEON
 
-PassNEON est une application construite avec le langage react native, et sera disponible prochainement sur le PlayStore de Google (en cours de validation par Google).
+PassNEON est une application construite avec le langage react native, et est disponible sur le PlayStore de Google disponible à l'adresse suivante : https://play.google.com/store/apps/details?id=app.yreelfactory.passneon.app
 
-description du PlayStore:
+description:
 toi aussi, comme pour plus de 50M français, tu possède le pass sanitaire, mais comme pour 100% des français, tu  le trouve moche ?
 Hé bien pas de panique !
 l'appli "Pass NEON" te permet de créer un pass sanitaire du TURFU dans une ambiance synthwave.

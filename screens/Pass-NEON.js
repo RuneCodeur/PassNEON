@@ -29,7 +29,7 @@ class pass extends React.Component {
       Animated.sequence([
         Animated.timing(
           this.state.ground, {
-            toValue: -427,
+            toValue: -387,
             duration: 950,
             easing: Easing.linear,
             useNativeDriver: true
@@ -51,34 +51,40 @@ class pass extends React.Component {
 
     if(this.state.fontsLoaded){
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#0d0d0d'}}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor:'#0d0d0d' }}>
         <ImageBackground resizeMode="cover" source={require('../src/picture/fond-space.jpg') } style={style.background}>
 
           <View style={style.generalInfo}>
-            <Text style={style.title}>Pass Sanitaire</Text>
-            <Text style={style.title2}>Pass Sanitaire</Text>
-            <View style={ style.blocPicture }>
-              { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={{ width: 200, height: 200 }} /> }
-              { this.props.myInfos.myCode != null && <QRCode value={this.props.myInfos.myCode} size={200}/> }
+            <View style={style.ensembleTitle}>
+              <Text style={style.title}>Pass Sanitaire</Text>
+              <Text style={style.title2}>Pass Sanitaire</Text>
             </View>
-            <View style={style.ensembleName}>
-              {this.props.myInfos.myName != '' && <Text style={style.myName}> {this.props.myInfos.myName} </Text>}
-              {this.props.myInfos.myName != '' && <Text style={style.myName2}> {this.props.myInfos.myName} </Text>}
 
-              {this.props.myInfos.myName == '' && <Text style={style.myName}> Rick DECKARD </Text>}
-              {this.props.myInfos.myName == '' && <Text style={style.myName2}> Rick DECKARD </Text>}
+            <View style={style.ensembleInfo}>
+              <View style={ style.blocPicture }>
+                { this.props.myInfos.myCode == null && <Image source={require('../src/picture/code.png')} style={{ width: 150, height: 150 }} /> }
+                { this.props.myInfos.myCode != null && <QRCode value={this.props.myInfos.myCode} size={150}/> }
+              </View>
+              <View style={style.ensembleName}>
+                {this.props.myInfos.myName != '' && <Text style={style.myName}> {this.props.myInfos.myName} </Text>}
+                {this.props.myInfos.myName != '' && <Text style={style.myName2}> {this.props.myInfos.myName} </Text>}
 
+                {this.props.myInfos.myName == '' && <Text style={style.myName}> Rick DECKARD </Text>}
+                {this.props.myInfos.myName == '' && <Text style={style.myName2}> Rick DECKARD </Text>}
+              </View>
             </View>
           </View>
 
-          <View style={style.ensembleUnicorn}>
-            <Image style={style.unicorn} source={require('../src/picture/unicornGIF.gif')}/>
-          </View>
-          
-          <View style={[style.ground, { transform:[{ rotateX: "70deg" }]}]}>
-            <Animated.View style={[style.cadrillage, {translateX: this.state.ground}]}>
-              <Image source={require('../src/picture/quadrillage.png')}/>
-            </Animated.View>
+          <View style={style.ensembleStyle}>
+            <View style={style.ensembleUnicorn}>
+              <Image style={style.unicorn} source={require('../src/picture/unicornGIF.gif')}/>
+            </View>
+            
+            <View style={[style.ground, { transform:[{ rotateX: "70deg" }]}]}>
+              <Animated.View style={[style.cadrillage, {translateX: this.state.ground}]}>
+                <Image source={require('../src/picture/quadrillage.png')}/>
+              </Animated.View>
+            </View>
           </View>
 
         </ImageBackground>
@@ -91,99 +97,122 @@ class pass extends React.Component {
 }
 
 const style = StyleSheet.create({
-  ensembleUnicorn:{
-    zIndex: 3,
-    top: 114,
-    position:'absolute',
-    elevation: 3,
-  },
-  unicorn:{
-    resizeMode: 'contain',
-    width:300,
-    height: 300,
-  },
   background:{
     flex: 1,
-    width: '100%',
     alignItems: 'center',
     justifyContent: "flex-start",
     resizeMode: 'cover',
   },
   generalInfo:{
-    width:'100%',
+    flex: 1,
+    position:'absolute',
+    height:'100%',
+    width: '100%',
     zIndex: 3,
     elevation: 3,
     alignItems: 'center', 
-    justifyContent: 'center'
+    justifyContent: 'space-between',
+  },
+
+  ensembleTitle:{
+    width:'100%',
+    flex: 2,
+    alignItems: 'center', 
+    justifyContent: 'center',
   },
   title:{
     color:'rgb(245, 37, 158)',
     fontSize: 50,
-    width:'100%',
-    marginTop: 100,
     fontFamily: 'streamster',
+    position:'absolute',
     textShadowColor: 'rgb(224, 9, 92)',
     textShadowOffset: {width: 3, height: 3},
     textAlign:'center',
-    textShadowRadius: 20
+    textShadowRadius: 20,
+    width: '100%',
   },
   title2:{
     color:'rgb(245, 37, 158)',
-    textAlign:'center',
-    position:'absolute',
-    width:'100%',
-    top:100,
     fontSize: 50,
     fontFamily: 'streamster',
+    position:'absolute',
     textShadowColor: 'rgb(224, 9, 92)',
     textShadowOffset: {width: -3, height: -3},
-    textShadowRadius: 20
+    textAlign:'center',
+    textShadowRadius: 20,
+    width: '100%',
+  },
+
+  ensembleInfo:{
+    flex: 4,
+    justifyContent: 'center',
+    alignItems:'center',
+    width: '100%',
   },
   blocPicture:{
-    marginTop: 190,
-    padding: 10,
+    marginTop:'5%',
     backgroundColor: 'white',
     borderRadius: 30,
     borderWidth: 10,
     borderColor: 'rgb(245, 37, 158)',
-  },
-  picture:{
-    width: 200, 
-    height: 200 
+    width: 190,
+    height: 190,
+    alignItems:'center',
+    justifyContent:'center',
   },
   ensembleName:{
-    marginTop:50,
-    justifyContent:'center',
+    marginTop:'25%',
+    justifyContent:'flex-end',
     alignItems:'center',
   },
   myName:{
     fontFamily: 'VCR',
     position:'absolute',
-    fontSize: 30,
+    marginLeft:10,
+    marginRight:10,
+    fontSize: 31,
     textAlign: 'center',
     textShadowColor: 'rgb(0, 236, 255)',
     textShadowOffset: {width: 0, height: 2},
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
   myName2:{
     fontFamily: 'VCR',
     position:'absolute',
-    fontSize: 30,
+    marginLeft:10,
+    marginRight:10,
+    fontSize: 31,
     textAlign: 'center',
     textShadowColor: 'rgb(255, 64, 69)',
     textShadowOffset: {width: 0, height: -2},
     textShadowRadius: 1
   },
+
+
+  ensembleStyle:{
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems:'center',
+    width: '100%',
+    height:'100%',
+  },
+  ensembleUnicorn:{
+    flex:1,
+    justifyContent: 'flex-end',
+    top:'35.8%',
+    elevation: 5,
+  },
+  unicorn:{
+    resizeMode: 'contain',
+    width:300,
+    height:200,
+  },
   ground:{
-    zIndex: 1,
+    flex:7,
     elevation: 1,
-    width:'100%',
-    flexDirection: 'row',
-    position: 'absolute',
-    top: 0,
+    flexDirection:'row',
   },
   cadrillage:{
-    height: 900,
     width:'150%',
   }
  
