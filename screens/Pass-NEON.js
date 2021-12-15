@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, Text, Image, StyleSheet, ImageBackground, Animated, Easing } from "react-native";
+import { View, Text, Image, StyleSheet, ImageBackground, Animated, Easing, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
 import * as Font from 'expo-font';
+import * as Brightness from 'expo-brightness';
 import QRCode from 'react-native-qrcode-svg';
 
 class pass extends React.Component {
@@ -12,7 +13,12 @@ class pass extends React.Component {
       ground: new Animated.Value(-60),
     }
   }
-    
+  
+  _tutoEnd(){
+    const action = { type: "tutoEnd", value: true };
+    this.props.dispatch(action)
+  }
+  
   async loadFonts() {
     await Font.loadAsync({
       streamster: require('../src/font/streamster.ttf'),
@@ -21,8 +27,14 @@ class pass extends React.Component {
     this.setState({ fontsLoaded: true });
   }
   
-  componentDidMount() {
+  async componentDidMount() {
     this.loadFonts();
+    if(this.props.myInfos.tuto == true){
+      const { status } = await Brightness.requestPermissionsAsync();
+        if (status === 'granted') {
+          Brightness.setSystemBrightnessAsync(0.9);
+        }
+    }
 
     /*timing d'animation du defilment du sol */
     Animated.loop(
@@ -86,6 +98,16 @@ class pass extends React.Component {
               </Animated.View>
             </View>
           </View>
+          {this.props.myInfos.tuto == false &&
+          <View style={style.ensembleTuto}>
+            <View style={{alignItems: 'flex-start', width:'100%'}}>
+              <Image style={{width:150, resizeMode: 'contain',}} source={require('../src/picture/finger.gif')}/>
+            </View>
+            <Text style={style.textTuto}> Fait glisser ton doigt sur l'écran de la gauche vers la droite pour faire apparaitre le menu</Text>
+            <TouchableOpacity onPress={()=>this._tutoEnd()} style={style.button}>
+              <Text style={style.textTuto}>Compris !</Text>
+            </TouchableOpacity>
+          </View>}
 
         </ImageBackground>
       </View>
@@ -97,6 +119,33 @@ class pass extends React.Component {
 }
 
 const style = StyleSheet.create({
+  button:{
+    textAlign:'center',
+    textAlignVertical: 'center',
+    backgroundColor: 'blue',
+    padding: 6,
+    margin: 20,
+  },
+  textTuto:{
+    color:'white',
+    fontWeight: '700',
+    textAlign: 'center',
+    paddingLeft: 30,
+    paddingRight: 30,
+    margin: 5,
+    fontSize: 20,
+  },
+  ensembleTuto:{
+    position: 'absolute',
+    backgroundColor: '#000000bb',
+    width:'100%',
+    height:'100%',
+    alignItems: 'center',
+    justifyContent: "center",
+    flexDirection:'column',
+    elevation: 6,
+  },
+
   background:{
     flex: 1,
     alignItems: 'center',
@@ -108,7 +157,6 @@ const style = StyleSheet.create({
     position:'absolute',
     height:'100%',
     width: '100%',
-    zIndex: 3,
     elevation: 3,
     alignItems: 'center', 
     justifyContent: 'space-between',
@@ -185,7 +233,7 @@ const style = StyleSheet.create({
     textAlign: 'center',
     textShadowColor: 'rgb(255, 64, 69)',
     textShadowOffset: {width: 0, height: -2},
-    textShadowRadius: 1
+    textShadowRadius: 1,
   },
 
 

@@ -1,4 +1,8 @@
-const initialInfo = {myName: '', myCode: null}
+const initialInfo = {
+  myName: '', 
+  myCode: null,
+  tuto: false
+}
 
 
 function myInfos(state = initialInfo, action) {
@@ -8,6 +12,8 @@ function myInfos(state = initialInfo, action) {
         return nextState ={ ...state, myName: action.value }
         case 'replace-qr':
         return nextState= { ...state, myCode: action.value }
+        case 'tutoEnd':
+        return nextState= { ...state, tuto: action.value }
     default:
       return state
     }

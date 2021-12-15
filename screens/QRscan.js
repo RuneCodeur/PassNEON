@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 		};
 	}
 
-	_stopscanning(){
+	_stopScanning(){
 		this.props.navigation.navigate('mon profil')
 	}
 
@@ -34,7 +34,7 @@ import { connect } from 'react-redux';
 			<View key={this.state.key} style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', }}>
 				<Camera style={style.camera} onBarCodeScanned={this.scan} type={'back'}/>
 
-				<TouchableOpacity onPress={()=>this._stopscanning()} style={style.ensembleButton}>
+				<TouchableOpacity onPress={()=>this._stopScanning()} style={style.ensembleButton}>
             		<Text style={style.button}>Retour</Text>
           		</TouchableOpacity>
 
