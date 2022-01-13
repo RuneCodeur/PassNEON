@@ -24,14 +24,14 @@ export default function App() {
         <PersistGate persistor={persistor}>
           <Drawer.Navigator 
             drawerType="front"
-            initialRouteName = "Pass-Sanitaire"
+            initialRouteName = "Pass-Vaccinal"
             screenOptions={{
               activeTintColor: '#e91e63',
               itemStyle: { marginVertical: 10 },
           }}>
             
             <Drawer.Screen
-              name = 'Pass-Sanitaire'
+              name = 'Pass-Vaccinal'
               options = {{ headerShown: false,
                 drawerItemStyle: { fontWeight: '700', } }}
               component = { passNEON } 
@@ -49,7 +49,7 @@ export default function App() {
               component = { QRscan }
             />
             <Drawer.Screen
-              name = 'Note du Développeur'
+              name = 'Notes du Développeur'
               options = {{ headerShown: false, drawerItemStyle: { marginTop: 25 } }}
               component = { notes }
             />

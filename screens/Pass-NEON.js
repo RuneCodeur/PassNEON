@@ -68,8 +68,8 @@ class pass extends React.Component {
 
           <View style={style.generalInfo}>
             <View style={style.ensembleTitle}>
-              <Text style={style.title}>Pass Sanitaire</Text>
-              <Text style={style.title2}>Pass Sanitaire</Text>
+              <Text style={style.title}>Pass Vaccinal</Text>
+              <Text style={style.title2}>Pass Vaccinal</Text>
             </View>
 
             <View style={style.ensembleInfo}>

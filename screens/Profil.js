@@ -30,6 +30,8 @@ class Profil extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
         <Text style={style.title}> mon Profil</Text>
   
+        <Text style={style.warning}> ATTENTION: Cette appli n'a pas pour but de remplacer l'appli "TousAntiCovid" proposé par le gouvernement.</Text>
+
         <View style={style.form}>
           <Text style={style.myname}> nom et prénom </Text>
           <TextInput style={style.mynameinput} placeholder="Rick DECKARD" defaultValue={this.props.myInfos.myName} onChangeText={(text) =>this._changeMyName(text)}></TextInput>
@@ -51,6 +53,7 @@ class Profil extends React.Component {
 }
 
 const style = StyleSheet.create({
+  
   title:{
     marginTop: 80,
     fontSize: 20,
@@ -58,8 +61,15 @@ const style = StyleSheet.create({
     textAlignVertical: 'center',
     justifyContent:'center',
   },
+  warning:{
+    marginTop: 30,
+    textAlign: 'center',
+    paddingLeft: 20,
+    paddingRight: 20,
+    color:'red',
+  },
   myname:{
-    marginTop: 80,
+    marginTop: 30,
     textAlign:'center',
   },
   mynameinput:{

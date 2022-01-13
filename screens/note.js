@@ -17,7 +17,7 @@ class Profil extends React.Component {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start', margin:25}}>
               <Text style={style.title}>Notes du developpeur</Text>
 
-              <Text style={style.text}>Salut, je suis le développeur, et c'est ma première appli ! </Text>
+              <Text style={style.text}>Salut, je suis le développeur, et c'est ma première appli mobile ! </Text>
               <Text style={style.text}>Tout d'abord, un grand merci d'avoir téléchargé le Pass NEON.</Text>
               <Text style={style.text}>Je vais continuer à mettre à jour cette appli, car j'ai envie de pousser le concept un peu plus loin et de proposer d'autres visuels dans différents styles.</Text>
               <Text style={style.text}>Si tu as des suggestions, n'hésite pas à m'envoyer un message à l'adresse mail suivant :</Text>

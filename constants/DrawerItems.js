@@ -3,7 +3,7 @@ export default [
         name:'mon profil'
     },
     {
-        name:'Pass-Sanitaire'
+        name:'Pass-Vaccinal'
     },
     {
         name:'scan'

@@ -23,9 +23,6 @@ import { connect } from 'react-redux';
 	
 
 	render(){
-		if (this.state.hasCameraPermission === null) {
-			return null
-		}
 		if (this.state.hasCameraPermission === false) {
 			alert('vous devez autoriser l\'accès à la camera.') 
 		}
