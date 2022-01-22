@@ -98,6 +98,7 @@ class pass extends React.Component {
               </Animated.View>
             </View>
           </View>
+
           {this.props.myInfos.tuto == false &&
           <View style={style.ensembleTuto}>
             <View style={{alignItems: 'flex-start', width:'100%'}}>
@@ -170,7 +171,7 @@ const style = StyleSheet.create({
   },
   title:{
     color:'rgb(245, 37, 158)',
-    fontSize: 50,
+    fontSize: 60,
     fontFamily: 'streamster',
     position:'absolute',
     textShadowColor: 'rgb(224, 9, 92)',
@@ -181,7 +182,7 @@ const style = StyleSheet.create({
   },
   title2:{
     color:'rgb(245, 37, 158)',
-    fontSize: 50,
+    fontSize: 60,
     fontFamily: 'streamster',
     position:'absolute',
     textShadowColor: 'rgb(224, 9, 92)',

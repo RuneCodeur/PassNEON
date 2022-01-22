@@ -30,7 +30,7 @@ class Profil extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
         <Text style={style.title}> mon Profil</Text>
   
-        <Text style={style.warning}> ATTENTION: Cette appli n'a pas pour but de remplacer l'appli "TousAntiCovid" proposé par le gouvernement.</Text>
+        <Text style={style.warning}> ATTENTION: L'application Pass NEON ne remplace pas l'application 'TousAntiCovid' du gouvernement, il est donc conseillé de garder l'application "TousAntiCovid" ou le certificat au format papier.</Text>
 
         <View style={style.form}>
           <Text style={style.myname}> nom et prénom </Text>
